@@ -22,8 +22,10 @@ public class UserInRole {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	@ManyToOne
 	@JoinColumn(name="role_id")
 	private Role role;
+	
 	public Integer getId() {
 		return id;
 	}
