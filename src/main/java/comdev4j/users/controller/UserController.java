@@ -19,7 +19,7 @@ import comdev4j.users.model.User;
 import comdev4j.users.services.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/v1/users")
 public class UserController {
 
 	@Autowired
