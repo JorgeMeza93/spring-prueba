@@ -21,12 +21,20 @@ public class UsersService {
 		//return userRepository.findAll();
 		return userRepository.findAll(PageRequest.of(page, size));
 	}
+	public	List<User> getUsers(){
+		return userRepository.findAll();
+	}
+	
+	public Page<String> getUsernames(int page, int size){
+		return userRepository.findUsernames(PageRequest.of(page, size));
+	}
 	
 	public User getUserById(Integer userId){
 		return userRepository.findById(userId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Usuario con id %d no encontrado", userId)));
 	}
 	public User getUserByUsername(String username) {
-		return userRepository.findByUsername(username).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Usuario con username %s no encontrado", username)));
+		return null;
+		//return userRepository.findByUsername(username).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Usuario con username %s no encontrado", username)));
 	}
 	public User getUserByUsernameAndPassword(String username, String password) {
 		return userRepository.findByUsernameAndPassword(username, password).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Usuario %s no encontrado.", password)));

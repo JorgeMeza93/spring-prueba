@@ -44,6 +44,10 @@ public class UsersController {
 	public ResponseEntity<User> getUserByPassword(@PathVariable("password") String password){
 		return new ResponseEntity<User>(service.getUserByPassword(password), HttpStatus.OK);
 	}
-	
+	@GetMapping("/usernames")
+	public ResponseEntity<Page<String>> getUsernames(@RequestParam(value="page", required=false, defaultValue = "0") int page,
+			@RequestParam(value = "size", required = false, defaultValue = "5") int size){
+		return new ResponseEntity<Page<String>>(service.getUsernames(page, size), HttpStatus.OK);
+	}
 	
 }
