@@ -20,7 +20,7 @@ public class ProfileController {
 	private ProfileService service;
 	
 	@GetMapping("/{profileId}")
-	public ResponseEntity<Profile> getById(@PathVariable("userId") Integer userId, @PathVariable("/profileId") Integer profileId){
+	public ResponseEntity<Profile> getById(@PathVariable("userId") Integer userId, @PathVariable("profileId") Integer profileId){
 		return new ResponseEntity<Profile>(service.getByUserIdAndProfileId(userId, profileId), HttpStatus.OK);
 	}
 	@PostMapping
