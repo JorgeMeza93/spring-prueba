@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,9 +23,7 @@ public class User implements Serializable{
 	private String username;
 	@Column(name = "password")
 	private String password;
-	@OneToOne
-	@JoinColumn(name = "profile_id", referencedColumnName = "id")
-	private Profile profile;
+
 	public Integer getId() {
 		return id;
 	}
@@ -45,12 +41,6 @@ public class User implements Serializable{
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public Profile getProfile() {
-		return profile;
-	}
-	public void setProfile(Profile profile) {
-		this.profile = profile;
 	}
 	@Override
 	public int hashCode() {

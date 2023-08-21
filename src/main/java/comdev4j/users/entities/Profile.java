@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class Profile {
 	private String lastname;
 	@Column(name="birthdate")
 	private Date birthdate;
+	@OneToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private User user;
 	public Integer getId() {
 		return id;
 	}
@@ -47,6 +52,12 @@ public class Profile {
 	}
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	@Override
 	public int hashCode() {
