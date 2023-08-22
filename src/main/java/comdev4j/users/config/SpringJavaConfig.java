@@ -23,6 +23,7 @@ public class SpringJavaConfig {
 	public UserDetailsService userDetailsService(BCryptPasswordEncoder bCryptPasswordEncoder) {
 		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 		manager.createUser(User.withUsername("admin").password(bCryptPasswordEncoder.encode("userPass")).roles("ADMIN").build());
+		manager.createUser(User.withUsername("user").password(bCryptPasswordEncoder.encode("userPass")).roles("USER").build());
 		return manager;
 	}
 	/*@Bean
@@ -38,10 +39,9 @@ public class SpringJavaConfig {
 	      .antMatchers("/users/**")
 	      .hasAnyRole("ADMIN")
 	      .antMatchers("/roles/**")
-	      .permitAll().anyRequest()
+	      .permitAll()
+	      .anyRequest()
 	      .authenticated()
-	      .antMatchers("/users/**")
-	      .hasAnyRole("USER", "ADMIN")
 	      .and()
 	      .httpBasic();
 	    return http.build();
