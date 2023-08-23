@@ -15,6 +15,13 @@ import javax.persistence.Table;
 @Table(name = "user_inRole")
 public class UserInRole {
 	
+	
+	
+	public UserInRole(User user, Role role) {
+		super();
+		this.user = user;
+		this.role = role;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")

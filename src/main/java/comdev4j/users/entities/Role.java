@@ -12,7 +12,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="role")
 public class Role {
-	
+	public Role() {
+		
+	}
+	public Role(String name) {
+		super();
+		this.name = name;
+	}
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
