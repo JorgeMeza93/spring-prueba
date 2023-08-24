@@ -10,19 +10,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import comdev4j.users.entities.Role;
+import comdev4j.users.entities.User;
 import comdev4j.users.repositories.RoleRepository;
+import comdev4j.users.repositories.UserInRoleRepository;
 
 @Service
 public class RoleService {
 
 	@Autowired
 	private RoleRepository repository;
+	@Autowired
+	private UserInRoleRepository userInRoleRepository;
 	
 	public List<Role> getRoles(){
 		Iterable<Role> roles = repository.findAll();
 		List<Role> listRoles = new ArrayList<Role>();
 		roles.forEach(listRoles::add);
 		return listRoles;
+	}
+	public List<User> getUsersByRole(String roleName){
+		return userInRoleRepository.findUsersByRoleName(roleName);
 	}
 	public Role createRole(Role role) {
 		return repository.save(role);

@@ -14,14 +14,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_inRole")
 public class UserInRole {
-	
-	
-	
-	public UserInRole(User user, Role role) {
-		super();
-		this.user = user;
-		this.role = role;
-	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -33,6 +25,11 @@ public class UserInRole {
 	@JoinColumn(name="role_id")
 	private Role role;
 	
+	public UserInRole(User user, Role role) {
+		super();
+		this.user = user;
+		this.role = role;
+	}
 	public Integer getId() {
 		return id;
 	}
