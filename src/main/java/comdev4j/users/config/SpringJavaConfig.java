@@ -19,13 +19,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SpringJavaConfig {
 	
-	@Bean
+/*	@Bean
 	public UserDetailsService userDetailsService(BCryptPasswordEncoder bCryptPasswordEncoder) {
 		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 		manager.createUser(User.withUsername("admin").password(bCryptPasswordEncoder.encode("userPass")).roles("ADMIN").build());
 		manager.createUser(User.withUsername("user").password(bCryptPasswordEncoder.encode("userPass")).roles("USER").build());
 		return manager;
-	}
+	} */
 	/*@Bean
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
