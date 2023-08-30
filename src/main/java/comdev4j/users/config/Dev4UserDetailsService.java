@@ -32,11 +32,10 @@ public class Dev4UserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<User> optional = userRepository.findByUsername(username);
-		if(optional.isPresent()) {
-			logger.info(optional.get().getUsername());
-			logger.info(optional.get().getPassword());			
-			User user = optional.get();
+		if(optional.isPresent()) {	
+			User user = optional.get();	
 			List<UserInRole> userInRoles = userInRoleRepository.findByUser(user);
+			logger.info("El resultado es " + userInRoles.size());
 			String[] roles = userInRoles.stream().map((r) -> r.getRole().getName()).toArray(String[]::new);
 			return org.springframework.security.core.userdetails.User.withUsername(user.getUsername())
 					.password(passwordEncoder.encode(user.getPassword())).roles(roles).build();
