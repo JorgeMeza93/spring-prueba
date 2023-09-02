@@ -43,16 +43,16 @@ public class UsersAppApplication implements ApplicationRunner{
 		Role[] roles = {new Role("ADMIN"), new Role("USER"), new Role("SUPPORT")};
 		for(Role role: roles) {
 			roleRepository.save(role);
-		}
+		} 
 		for(int i = 0;i<19;i++) {
 			User user = new User();
 			user.setUsername(faker.name().username());
 			user.setPassword(faker.dragonBall().character());
 			User userCreated = repository.save(user);
 			UserInRole userInRole = new UserInRole(userCreated, roles[new Random().nextInt(3)]);
-			log.info("User created username {} password {} role {}", userCreated.getUsername(), userCreated.getPassword(), userInRole.getRole().getName());
-			userInRoleRepository.save(userInRole);
-		}
+			/*log.info("User created username {} password {} role {}", userCreated.getUsername(), userCreated.getPassword(), userInRole.getRole().getName());
+			userInRoleRepository.save(userInRole); */
+		} 
 		
 	}
 

@@ -19,11 +19,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SpringJavaConfig {
 	
-
+	@Bean
 	public UserDetailsService userDetailsService(BCryptPasswordEncoder bCryptPasswordEncoder) {
 		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-		/*manager.createUser(User.withUsername("admin").password(bCryptPasswordEncoder.encode("userPass")).roles("ADMIN").build());
-		manager.createUser(User.withUsername("user").password(bCryptPasswordEncoder.encode("userPass")).roles("USER").build()); */
+		manager.createUser(User.withUsername("admin").password(bCryptPasswordEncoder.encode("userPass")).roles("ADMIN").build());
+		manager.createUser(User.withUsername("user").password(bCryptPasswordEncoder.encode("userPass")).roles("USER").build()); 
 		return manager;
 		
 	} 
@@ -31,7 +31,7 @@ public class SpringJavaConfig {
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}*/
-	@Bean
+
 	public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsService userDetailService) 
 	  throws Exception {
 	    return http.getSharedObject(AuthenticationManagerBuilder.class)
