@@ -16,7 +16,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 public class Devs4jKafkaConfiguration {
 	
 	/* Producer */
-	private Map<String, Object> consumerProps(){
+	public Map<String, Object> consumerProps(){
 		Map<String, Object> props = new HashMap<>();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, "devs4jGroup");
